@@ -1,10 +1,13 @@
 import React from "react";
-
-//include images into your bundle
+import ToDoList from "./ToDoList.jsx";
 
 //create your first component
 const Home = () => {
-	return <div>"Hello World"</div>;
+	return (
+		<>
+			<ToDoList />
+		</>
+	);
 };
 
 export default Home;
