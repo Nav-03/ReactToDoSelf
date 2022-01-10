@@ -21,10 +21,14 @@
      text-align: center;
     background: darkgray;
 }
-.inputToDo{
+.ToDoList{
     background: cornflowerblue;
     padding: 6px 6px;
     width: 40%;
     box-sizing: border-box;
     border-style: none;
+}
+.taskList{
+    text-align: center;
+    background: lightgray;
 }

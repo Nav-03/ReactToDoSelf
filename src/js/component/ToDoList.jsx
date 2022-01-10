@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import Data from "./Data.json";
 
-const ToDoList = () => {
+//Read list of to dos and display
+
+function ToDoList() {
+	const [toDoList, setToDoList] = useState(Data);
 	return (
 		<>
-			<header className="Title">To-Do List</header>
-			<div className="inputList">
-				<input className="inputToDo" placeholder="To-Do List" />
-			</div>
+			<form className="inputList">
+				<input className="ToDoList" placeholder="To-Do List" />
+				<ul className="taskList"></ul>
+			</form>
 		</>
 	);
-};
+}
 
 export default ToDoList;
