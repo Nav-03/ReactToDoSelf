@@ -28,7 +28,7 @@
     border-radius: 4px;
     max-width: 400px;
     padding: 5px;
-    
+    margin: 0 auto;
   }
   
   .todo {
