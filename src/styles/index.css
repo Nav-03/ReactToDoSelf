@@ -11,24 +11,49 @@
 
 */
 
+
 .Title{
-    font-weight: bold;
-    font-size: 40px;
-    display: flex;
-    justify-content: space-around;
-}
-.inputList{
-     text-align: center;
-    background: darkgray;
-}
-.ToDoList{
-    background: cornflowerblue;
-    padding: 6px 6px;
-    width: 40%;
-    box-sizing: border-box;
-    border-style: none;
-}
-.taskList{
     text-align: center;
-    background: lightgray;
+    opacity: 80%;
 }
+.app {
+    background: #209cee;
+    height: 100vh;
+    padding: 30px;
+    
+  }
+  
+  .todo-list {
+    background: #e8e8e8;
+    border-radius: 4px;
+    max-width: 400px;
+    padding: 5px;
+    
+  }
+  
+  .todo {
+    align-items: center;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    padding: 3px 10px;
+    
+  }
+  .input{
+      width: 100%;
+      align-items: center;
+      background: #fff;
+      border-radius: 3px;
+      border: none;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+      display: flex;
+      font-size: 12px;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      padding: 3px 10px;
+      
+  }
