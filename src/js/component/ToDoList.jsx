@@ -10,10 +10,10 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
 			{todo.text}
 			<div>
 				<button onClick={() => completeTodo(index)}>
-					<i class="fas fa-check"></i>
+					<i className="fas fa-check"></i>
 				</button>
 				<button onClick={() => removeTodo(index)}>
-					<i class="fas fa-trash-alt"></i>
+					<i className="fas fa-trash-alt"></i>
 				</button>
 			</div>
 		</div>
