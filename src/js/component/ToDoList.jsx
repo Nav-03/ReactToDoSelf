@@ -20,10 +20,12 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
 	);
 }
 
+// adding each todo
 function TodoForm({ addTodo }) {
 	const [value, setValue] = useState("");
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		if (!value) return;
 		addTodo(value);
 		setValue("");
@@ -39,6 +41,8 @@ function TodoForm({ addTodo }) {
 		</form>
 	);
 }
+
+//List of To-Do items with functionality sent to render on page
 
 function ToDoList() {
 	const [todos, setTodos] = useState([
