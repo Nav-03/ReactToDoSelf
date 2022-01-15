@@ -61,11 +61,10 @@ function ToDoList() {
 		setTodos(newTodos);
 	};
 
-	const removeTodo = (index) => {
-		const newTodos = [...todos];
-		newTodos.splice(index, 1);
-		setTodos(newTodos);
-	};
+	const removeTodo = (indexToDelete) =>
+		setTodos(
+			todos.filter((item, currentIndex) => currentIndex !== indexToDelete)
+		);
 
 	return (
 		<div className="app">
