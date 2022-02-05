@@ -44,14 +44,11 @@ function TodoForm({ addTodo }) {
 
 //List of To-Do items with functionality sent to render on page
 
-function ToDoList() {
-
-
-
+function ToDoList(props) {
 	const getAllTodos = async function () {
 		const options = {
 			method: "GET",
-			body: JSON.stringify(null),
+			body: JSON.stringify(),
 			headers: { "content-type": "application/json" },
 		};
 		const response = await fetch(
@@ -65,7 +62,6 @@ function ToDoList() {
 		//code goes here
 		getAllTodos();
 	}, []);
-
 
 	const [todos, setTodos] = useState([
 		{ text: "Learn about React", isCompleted: false },
@@ -82,6 +78,7 @@ function ToDoList() {
 			"https://assets.breatheco.de/apis/fake/todos/user/unicorn",
 			options
 		);
+		setList(await response.json());
 	};
 
 	const completeTodo = (index) => {
