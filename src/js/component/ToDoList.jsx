@@ -52,7 +52,7 @@ function ToDoList(props) {
 			headers: { "content-type": "application/json" },
 		};
 		const response = await fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/unicorn",
+			"https://assets.breatheco.de/apis/fake/todos/user",
 			options
 		);
 		setList(await response.json());
@@ -75,7 +75,7 @@ function ToDoList(props) {
 			headers: { "content-type": "application/json" },
 		};
 		const response = await fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user/unicorn",
+			"https://assets.breatheco.de/apis/fake/todos/user",
 			options
 		);
 		setList(await response.json());
