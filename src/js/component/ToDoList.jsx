@@ -44,7 +44,7 @@ function TodoForm({ addTodo }) {
 
 //List of To-Do items with functionality sent to render on page
 
-function ToDoList(props) {
+function ToDoList() {
 	const getAllTodos = async function () {
 		const options = {
 			method: "GET",
@@ -55,13 +55,8 @@ function ToDoList(props) {
 			"https://assets.breatheco.de/apis/fake/todos/user",
 			options
 		);
-		setList(await response.json());
+		getAllTodos(await response.json());
 	};
-
-	useEffect(() => {
-		//code goes here
-		getAllTodos();
-	}, []);
 
 	const [todos, setTodos] = useState([
 		{ text: "Learn about React", isCompleted: false },
@@ -69,16 +64,27 @@ function ToDoList(props) {
 		{ text: "Have nervous breakdown", isCompleted: false },
 	]);
 	const addTodo = async (newTodos) => {
-		const options = {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user", {
 			method: "PUT",
-			body: JSON.stringify(newTodos),
-			headers: { "content-type": "application/json" },
-		};
-		const response = await fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user",
-			options
-		);
-		setList(await response.json());
+			body: JSON.stringify(todos),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		})
+			.then((resp) => {
+				console.log(resp.ok); // will be true if the response is successfull
+				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				console.log(resp.text()); // will try return the exact result as string
+				return resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+			})
+			.then((data) => {
+				//here is were your code should start after the fetch finishes
+				console.log(data); //this will print on the console the exact object received from the server
+			})
+			.catch((error) => {
+				//error handling
+				console.log(error);
+			});
 	};
 
 	const completeTodo = (index) => {
