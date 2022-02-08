@@ -6,8 +6,8 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
 	return (
 		<div
 			className="todo"
-			style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}>
-			{todo.text}
+			style={{ textDecoration: todo.done ? "line-through" : "" }}>
+			{todo.label}
 			<div>
 				<button onClick={() => completeTodo(index)}>
 					<i className="fas fa-check"></i>
@@ -27,7 +27,7 @@ function TodoForm({ addTodo }) {
 		e.preventDefault();
 
 		if (!value) return;
-		addTodo(value);
+		addTodo({ label: value, done: false });
 		setValue("");
 	};
 	return (
@@ -45,26 +45,22 @@ function TodoForm({ addTodo }) {
 //List of To-Do items with functionality sent to render on page
 
 function ToDoList() {
-	const getAllTodos = async function () {
+	const [todos, setTodos] = useState([]);
+
+	useEffect(async () => {
 		const options = {
 			method: "GET",
 			body: JSON.stringify(),
 			headers: { "content-type": "application/json" },
 		};
 		const response = await fetch(
-			"https://assets.breatheco.de/apis/fake/todos/user",
-			options
+			"https://assets.breatheco.de/apis/fake/todos/user/alesanchezr"
 		);
-		getAllTodos(await response.json());
-	};
+		setTodos(await response.json());
+	}, []);
 
-	const [todos, setTodos] = useState([
-		{ text: "Learn about React", isCompleted: false },
-		{ text: "Practice React", isCompleted: false },
-		{ text: "Have nervous breakdown", isCompleted: false },
-	]);
-	const addTodo = async (newTodos) => {
-		fetch("https://assets.breatheco.de/apis/fake/todos/user", {
+	useEffect(() => {
+		fetch("https://assets.breatheco.de/apis/fake/todos/user/alesanchezr", {
 			method: "PUT",
 			body: JSON.stringify(todos),
 			headers: {
@@ -74,15 +70,18 @@ function ToDoList() {
 			.then((response) => {
 				if (response.status == 200) return response.json();
 			})
-			.then((response) => {
-				// successfully completed, you should call the addTodo function here.
-			})
+			.then((response) => console.log(response))
 			.catch((error) => console.log("Error fetching todos:", error));
+	}, [todos]);
+
+	const addTodo = (newTodo) => {
+		const newTodos = [...todos, newTodo];
+		setTodos(newTodos);
 	};
 
 	const completeTodo = (index) => {
 		const newTodos = [...todos];
-		newTodos[index].isCompleted = true;
+		newTodos[index].done = true;
 		setTodos(newTodos);
 	};
 
