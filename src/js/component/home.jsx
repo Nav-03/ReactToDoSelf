@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Header from "./Header.jsx";
+import React from "react";
 import ToDoList from "./ToDoList.jsx";
 
 //create your first component
