@@ -81,7 +81,7 @@ function ToDoList() {
 
 	const completeTodo = (index) => {
 		const newTodos = [...todos];
-		newTodos[index].done = true;
+		newTodos[index].done = !newTodos[index].done;
 		setTodos(newTodos);
 	};
 

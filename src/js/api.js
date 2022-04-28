@@ -23,7 +23,7 @@ export async function createTodos() {
 
 
 export async function updateTodos(todos) {
-    (
+   await fetch (
         "https://assets.breatheco.de/apis/fake/todos/user/Nav",
         {
             method: "PUT",
@@ -36,7 +36,7 @@ export async function updateTodos(todos) {
 }
 
 export async function deleteTodos(todos) {
-    (
+   await fetch (
         "https://assets.breatheco.de/apis/fake/todos/user/Nav",
         {
             method: "DELETE",
@@ -50,18 +50,18 @@ export async function deleteTodos(todos) {
 
 
 
-fetch("https://assets.breatheco.de/apis/fake/todos/user/Nav", {
-    method: "PUT",
-    body: JSON.stringify(todos),
-    headers: {
-        "Content-Type": "application/json",
-    },
-})
-    .then((response) => {
-        if (response.status == 200) return response.json();
-    })
-    .then((response) => console.log(response))
-    .catch((error) => console.log("Error fetching todos:", error));
+// fetch("https://assets.breatheco.de/apis/fake/todos/user/Nav", {
+//     method: "PUT",
+//     body: JSON.stringify(todos),
+//     headers: {
+//         "Content-Type": "application/json",
+//     },
+// })
+//     .then((response) => {
+//         if (response.status == 200) return response.json();
+//     })
+//     .then((response) => console.log(response))
+//     .catch((error) => console.log("Error fetching todos:", error));
 
 
 // const addTodo = (newTodo) => {
